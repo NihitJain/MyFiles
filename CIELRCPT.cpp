@@ -18,7 +18,7 @@ int main()
 
 		int P[12];
 		for(int i=0;i<12;i++)
-			P[i]=pow(2,i-1);
+			P[i]=pow(2,i);
 
 		
 		for(int i=0;i<t;i++)
@@ -26,11 +26,14 @@ int main()
 				int a=0;
 				start: while(A[i]>0)
 					        for(int k=0;k<12;k++)
-						        if(A[i]/P[k]<1)
+						        if((A[i]/P[k]<1)||(k==11))
 						        {
-							        A[i]=A[i]-P[k];
-							         a++;
-							         goto start;
+						        	if(A[i]>=P[11])
+							        	A[i]=A[i]-P[11];
+							    	else
+						    			A[i]=A[i]-P[k-1];
+							        a++;
+							        goto start;
 						        }
 				C[i]=a;
 			}
